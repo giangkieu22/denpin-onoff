@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>denpin</title>
+</head>
+<body>
+<button onclick="f.on()"> ON </button>
+<button onclick="f.off()"> OFF </button>
+<button onclick="f.light()">is this thing on??</button>
+<script>
+    let bat = function() {
+        this.setenergy = function (energy) {
+            this.energy = energy;
+        };
+        this.getenergy = function () {
+            return this.energy;
+        };
+        this.decrease = function () {
+            if (this.energy > 0) {
+                this.energy--;
+            }
+        }
+    };
+
+    let flash = function () {
+        this.setbat = function (battery) {
+            this.battery = battery;
+            console.log(this.battery);
+        };
+        this.getBatteryinfo = function (battery) {
+            this.battery = battery;
+            console.log(this.battery);
+        };
+        this.on = function () {
+            this.status = true;
+            // return true;
+        };
+        this.off = function () {
+            this.status = false;
+        };
+        this.light = function () {
+            if (this.status) {
+                alert('Yes');
+            } else {
+                alert('No');
+            }
+        }
+    };
+
+    let b = new bat();
+    b.setenergy(50);
+
+    let f = new flash();
+    f.setbat(b.getenergy());
+    f.getBatteryinfo(b.energy);
+</script>
+</body>
+</html>
